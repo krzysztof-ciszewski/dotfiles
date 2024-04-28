@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source $ZDOTDIR/.git-aliases
+source $HOME/.git-aliases
 
 alias \
     cp="cp -iv" \

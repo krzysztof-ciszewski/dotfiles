@@ -21,20 +21,16 @@ setopt share_history          # share command history data
 setopt GLOB_COMPLETE
 setopt NO_CASE_GLOB
 
-source "$ZDOTDIR/.zplugin/bin/zplugin.zsh"
-
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zmodload zsh/complist
-if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+if [[ -n ${HOME}/.zcompdump(#qN.mh+24) ]]; then
     compinit;
 else
     compinit -C;
 fi;
 _comp_options+=(globdots)
-
-compdef _pash pash-git
 
 bindkey '^U' backward-kill-line
 bindkey -v '^?' backward-delete-char
@@ -47,7 +43,13 @@ bindkey '\C-x\C-e' edit-command-line
 bindkey '^R' history-incremental-search-backward
 bindkey '^K' kill-line
 
-source $ZDOTDIR/.aliases
+source $HOME/.aliases
+
+ZSH_CACHE_DIR=$HOME/.cache/zsh
+
+if [[ ! -d $ZSH_CACHE_DIR ]]; then
+	mkdir $ZSH_CACHE_DIR
+fi
 
 fasd_cache="${ZSH_CACHE_DIR}/fasd-init-cache"
 if [ ! -s "$fasd_cache" ]; then
@@ -57,16 +59,26 @@ source "$fasd_cache"
 unset fasd_cache
 
 # Pugins
+ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME/.config/zsh}/plugins}
+
+if [[ ! -d $ZPLUGINDIR/zsh_unplugged ]]; then
+    git clone --quiet https://github.com/mattmc3/zsh_unplugged $ZPLUGINDIR/zsh_unplugged
+fi
+
+source $ZPLUGINDIR/zsh_unplugged/zsh_unplugged.zsh
+
 PURE_PROMPT_SYMBOL=">"
 PURE_PROMPT_VICMD_SYMBOL="<"
-zplugin ice pick"async.zsh" src"pure.zsh"
-zplugin light sindresorhus/pure
-zplugin light zdharma/fast-syntax-highlighting
-zplugin load MichaelAquilina/zsh-you-should-use
 ZSH_AUTOSUGGEST_STRATEGY="history"
-zplugin load zsh-users/zsh-autosuggestions
+repos=(
+	sindresorhus/pure
+	zdharma-continuum/fast-syntax-highlighting
+	MichaelAquilina/zsh-you-should-use
+	zsh-users/zsh-autosuggestions
+	zsh-users/zsh-completions
+)
+plugin-load $repos
 bindkey '^ ' autosuggest-accept
-zplugin load zsh-users/zsh-completions
 
 eval `ssh-agent -s` >/dev/null  2>&1
 ssh-add >/dev/null 2>&1
