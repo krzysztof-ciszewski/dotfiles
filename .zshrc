@@ -2,7 +2,8 @@
 ## vim:syntax=zsh
 ## vim:filetype=zsh
 source ~/.profile
-fpath=($ZDOTDIR/completions $fpath)
+export HISTFILE=${HOME}/.zsh_history
+fpath=(${HOME}/completions $fpath)
 
 unsetopt menu_complete   # do not autoselect the first completion entry
 unsetopt flowcontrol
@@ -82,3 +83,5 @@ bindkey '^ ' autosuggest-accept
 
 eval `ssh-agent -s` >/dev/null  2>&1
 ssh-add >/dev/null 2>&1
+
+eval "$(atuin init zsh)"
