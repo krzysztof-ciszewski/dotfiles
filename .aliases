@@ -9,23 +9,18 @@ alias \
     ls="ls --color -l --group-directories-first" \
     lsa="ls -lAFh --sort=extension --color --group-directories-first" \
     ll="lsa" \
-    zrc="vim $ZDOTDIR/.zshrc" \
+    zrc="vim ~/.zshrc" \
     S="sudo pacman -S" \
     p="sudo pacman" \
     ka="killall" \
-    b="launch_polybar" \
-    bs="stop_polybar" \
-    pash="pash-git" \
     v="f -e $EDITOR" \
     o="a -e xdg-open" \
     j="zz" \
     mic="pactl load-module module-loopback latency_msec=1" \
     micoff="pactl unload-module module-loopback" \
-    dres="(cd ~/workspace/api-docker && docker-compose restart)" \
-    up="(cd ~/workspace/api-docker && docker-compose up -d)" \
-    psh="(cd ~/workspace/api-docker && docker-compose exec php sh)" \
-    pshr="(cd ~/workspace/api-docker && docker-compose exec -u root php sh)" \
-    behat="(cd ~/workspace/api-docker && docker-compose exec php sh -c \"XDEBUG_MODE=off vendor/bin/behat -f progress\")" \
-    phpunit="(cd ~/workspace/api-docker && docker-compose exec php sh -c \"XDEBUG_MODE=off vendor/bin/phpunit\")" \
+    dres="(docker-compose restart)" \
+    up="(docker-compose up -d)" \
+    psh="(docker && docker-compose exec php sh)" \
     dco="docker-compose" \
-    dcx="docker-compose exec"
+    dcx="docker-compose exec" \
+    vim="nvim"
