@@ -1,3 +1,9 @@
 .zsh_history
 completions
-
+.idea
+.config/github-copilot
+.config/jgit
+.config/nvim/lazy-lock.json
+.config/psysh
+.config/zsh
+.config/.DS_Store
