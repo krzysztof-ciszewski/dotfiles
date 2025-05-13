@@ -2,11 +2,14 @@
 
 source $HOME/.git-aliases
 
+if [ "$OSTYPE" != linux-gnu ]; then  # Is this the macOS system?
+    alias ls=gls
+fi
+
 alias \
     cp="cp -iv" \
     mv="mv -iv" \
     rm="rm -v" \
-    ls="ls --color -l --group-directories-first" \
     lsa="ls -lAFh --sort=extension --color --group-directories-first" \
     ll="lsa" \
     zrc="vim ~/.zshrc" \

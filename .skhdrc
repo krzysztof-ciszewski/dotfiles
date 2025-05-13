@@ -1,0 +1,42 @@
+ctrl + shift - e : open -na /Applications/Alacritty.app/Contents/MacOS/alacritty
+ctrl - c : skhd -k 'cmd - c'
+ctrl + shift - c : skhd -k 'ctrl - c'
+ctrl - v : skhd -k 'cmd - v'
+ctrl - a : skhd -k 'cmd - a'
+ctrl - f : skhd -k 'cmd - f'
+ctrl - w : skhd -k 'cmd - w'
+ctrl - k : skhd -k 'cmd - k'
+ctrl - z : skhd -k 'cmd - z'
+alt - tab : skhd -k 'cmd - tab'
+ctrl - right : skhd -k 'alt - right'
+ctrl - left : skhd -k 'alt - left'
+
+ctrl - 0x2C [
+	"phpstorm" : skhd -k 'cmd - 0x2C'
+]
+
+ctrl - backspace [
+	"phpstorm" : skhd -k 'alt - backspace'
+]
+
+
+ctrl + shift - c [
+	"phpstorm" : skhd -k 'ctrl - c'
+]
+
+ctrl - c [
+	"phpstorm" : skhd -k 'cmd - c'
+]
+
+ctrl - v [
+	"phpstorm" : skhd -k 'cmd - v'
+	"firefox" : skhd -k 'cmd - v'
+]
+
+ctrl + shift - t [
+	"firefox" : skhd -k 'cmd + shift - t'
+]
+
+ctrl - t [
+	"firefox" : skhd -k 'cmd - t'
+]
